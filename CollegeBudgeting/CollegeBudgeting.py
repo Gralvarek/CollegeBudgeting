@@ -1,26 +1,27 @@
 import matplotlib.pyplot as plt
-import numpy as np
+from Function import Function
 
-x_1 = []
-d_1 = []
-
-function = 0
-
-demandconst = 5
-constraint = 5
-
-dt = .01
-x = 0
-while x < 10:
-    x_1.append(x)
-    if(x <= constraint):
-        function = demandconst + x**2
-        d_1.append(function)
-    else:
-        function = -((x - constraint)**2) + 30
-        d_1.append(function)
-    x += dt;
+def main():
+    x_ = []
+    d_ = []
+    dt = 0.01
+    
+    func = Function(5)
+    x = 0
+    while x < 10:
+        x_.append(x)
+        if(x <= func.constraint):
+            function = func.savings(x, '1', 5, 30)
+            d_.append(function)
+        else:
+            function = func.savings(x, '2', 5, 30)
+            d_.append(function)
+        x += dt;
 
 
-plt.plot(x_1, d_1)
-plt.show()
+    plt.plot(x_, d_)
+    plt.show()
+
+
+main()
+
