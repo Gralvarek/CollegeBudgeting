@@ -1,11 +1,10 @@
 class Function(object):
-    def __init__(self, const):
-        self.constraint = const
     
-    def savings(self, var, switch, dConst, continuity):
-        return {
-            '1' : dConst + var**2,
-            '2' : -((var - self.constraint)**2) + continuity,
-        }[switch]
+    def transportation(self, var, dConst, constraint, continuity):
+            if(var <= constraint):
+                return dConst + var**2
+            else:
+                return -((var - constraint)**2) + continuity
 
-
+    def savings(self, var, dConst):
+        return dConst * var**(1/2)
